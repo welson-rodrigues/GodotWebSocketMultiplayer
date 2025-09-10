@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckv7jeahjyjks"]
 
-[ext_resource type="Script" uid="uid://b44e5wc5xjmva" path="res://addons/SimpleMultiplayer/multiplayer_manager.gd" id="1_nors7"]
+[ext_resource type="Script" path="res://addons/SimpleMultiplayer/multiplayer_manager.gd" id="1_nors7"]
 [ext_resource type="PackedScene" uid="uid://frburacvuc6m" path="res://addons/cenas/player_test.tscn" id="2_tlmkk"]
 [ext_resource type="PackedScene" uid="uid://qbg6icue0a41" path="res://addons/cenas/network_player_test.tscn" id="3_di4w8"]
 

@@ -13,9 +13,21 @@ var WebSocketClient = null
 var MultiplayerManager = null
 
 func _ready() -> void:
-	# Pega a referência dos singletons do addon
-	WebSocketClient = Engine.get_singleton("WebSocketClient")
-	MultiplayerManager = Engine.get_singleton("MultiplayerManager")
+	# Verifica se o primeiro singleton essencial existe
+	if Engine.has_singleton("WebSocketClient"):
+		WebSocketClient = Engine.get_singleton("WebSocketClient")
+	else:
+		push_error("WebSocketClient não encontrado! Certifique-se de que o plugin está ativo.")
+		status_label.text = "ERRO: WebSocketClient não encontrado."
+		return # PARAR a execução para evitar mais erros.
+
+	# Verifica se o segundo singleton existe
+	if Engine.has_singleton("MultiplayerManager"):
+		MultiplayerManager = Engine.get_singleton("MultiplayerManager")
+	else:
+		push_error("MultiplayerManager não encontrado! Certifique-se de que o plugin está ativo.")
+		status_label.text = "ERRO: MultiplayerManager não encontrado."
+		return # PARAR a execução.
 
 	# Conecta os sinais dos botões às funções deste script
 	connect_button.connect("pressed", Callable(self, "_on_connect_button_pressed"))

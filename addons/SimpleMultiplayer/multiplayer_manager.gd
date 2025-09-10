@@ -11,9 +11,15 @@ var player_nodes = {} # Dicionário para guardar os nós dos jogadores
 var WebSocketClient = null
 
 func _ready():
-	# Pega a referência do singleton do addon
+	# Verificamos se o singleton existe. Se não, emitimos um erro e paramos a execução.
+	if not Engine.has_singleton("WebSocketClient"):
+		push_error("WebSocketClient não encontrado! Verifique se o plugin está ativo e a ordem dos Autoloads.")
+		return
+
+	# Se existe, pegamos a referência uma única vez.
 	WebSocketClient = Engine.get_singleton("WebSocketClient")
 	
+	# Conectamos os sinais
 	WebSocketClient.connect("player_joined", Callable(self, "_on_player_joined"))
 	WebSocketClient.connect("player_left", Callable(self, "_on_player_left"))
 	WebSocketClient.connect("received_data", Callable(self, "_on_received_data"))
