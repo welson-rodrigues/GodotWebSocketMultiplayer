@@ -1,4 +1,3 @@
-# websocket_client.gd
 extends Node
 
 signal connection_succeeded
@@ -14,6 +13,16 @@ signal received_data(data)
 var uuid: String = ""
 var _peer := WebSocketPeer.new()
 var _is_connected := false
+
+# Variável global simples em vez de tipo estático
+var instance = null
+
+func _enter_tree():
+	instance = self
+	print("WebSocketClient autoload carregado")
+
+func _exit_tree():
+	instance = null
 
 func _process(_delta):
 	if _is_connected:

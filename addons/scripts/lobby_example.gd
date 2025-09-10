@@ -1,4 +1,3 @@
-# lobby_example.gd
 extends Control
 
 @onready var server_url_line_edit = $VBoxContainer/ServerUrlLineEdit
@@ -8,53 +7,53 @@ extends Control
 @onready var create_room_button = $VBoxContainer/CreateRoomButton
 @onready var status_label = $VBoxContainer/StatusLabel
 
-# Guardamos a referência dos singletons para não ter que chamar Engine.get_singleton() toda hora
-var WebSocketClient = null
-var MultiplayerManager = null
-
 func _ready() -> void:
-	# Verifica se o primeiro singleton essencial existe
-	if Engine.has_singleton("WebSocketClient"):
-		WebSocketClient = Engine.get_singleton("WebSocketClient")
-	else:
-		push_error("WebSocketClient não encontrado! Certifique-se de que o plugin está ativo.")
-		status_label.text = "ERRO: WebSocketClient não encontrado."
-		return # PARAR a execução para evitar mais erros.
-
-	# Verifica se o segundo singleton existe
-	if Engine.has_singleton("MultiplayerManager"):
-		MultiplayerManager = Engine.get_singleton("MultiplayerManager")
-	else:
-		push_error("MultiplayerManager não encontrado! Certifique-se de que o plugin está ativo.")
-		status_label.text = "ERRO: MultiplayerManager não encontrado."
-		return # PARAR a execução.
-
-	# Conecta os sinais dos botões às funções deste script
+	# Conecta os botões
 	connect_button.connect("pressed", Callable(self, "_on_connect_button_pressed"))
 	join_room_button.connect("pressed", Callable(self, "_on_join_room_button_pressed"))
 	create_room_button.connect("pressed", Callable(self, "_on_create_room_button_pressed"))
+	
+	# Conecta aos sinais do WebSocketClient com um pequeno delay
+	call_deferred("_connect_websocket_signals")
 
-	# Conecta aos sinais do addon para receber feedback
-	WebSocketClient.connect("connection_succeeded", Callable(self, "_on_connection_succeeded"))
-	WebSocketClient.connect("connection_failed", Callable(self, "_on_connection_failed"))
-	WebSocketClient.connect("room_created", Callable(self, "_on_room_created"))
-	WebSocketClient.connect("room_joined", Callable(self, "_on_room_joined"))
-	WebSocketClient.connect("server_error", Callable(self, "_on_server_error"))
+func _connect_websocket_signals():
+	# Acessa o WebSocketClient através do caminho absoluto
+	var ws_client = get_node("/root/WebSocketClient")
+	if ws_client:
+		ws_client.connect("connection_succeeded", Callable(self, "_on_connection_succeeded"))
+		ws_client.connect("connection_failed", Callable(self, "_on_connection_failed"))
+		ws_client.connect("room_created", Callable(self, "_on_room_created"))
+		ws_client.connect("room_joined", Callable(self, "_on_room_joined"))
+		ws_client.connect("server_error", Callable(self, "_on_server_error"))
+		status_label.text = "Pronto para conectar"
+	else:
+		status_label.text = "WebSocketClient não disponível"
 
 func _on_connect_button_pressed() -> void:
-	status_label.text = "Conectando..."
-	WebSocketClient.connect_to_server(server_url_line_edit.text)
+	var ws_client = get_node("/root/WebSocketClient")
+	if ws_client:
+		status_label.text = "Conectando..."
+		ws_client.connect_to_server(server_url_line_edit.text)
+	else:
+		status_label.text = "WebSocketClient não disponível"
 
 func _on_join_room_button_pressed() -> void:
-	status_label.text = "Entrando na sala..."
-	WebSocketClient.send_message("join_room", {"code": room_code_line_edit.text})
+	var ws_client = get_node("/root/WebSocketClient")
+	if ws_client:
+		status_label.text = "Entrando na sala..."
+		ws_client.send_message("join_room", {"code": room_code_line_edit.text})
+	else:
+		status_label.text = "WebSocketClient não disponível"
 
 func _on_create_room_button_pressed() -> void:
-	status_label.text = "Criando sala..."
-	WebSocketClient.send_message("create_room", {})
+	var ws_client = get_node("/root/WebSocketClient")
+	if ws_client:
+		status_label.text = "Criando sala..."
+		ws_client.send_message("create_room", {})
+	else:
+		status_label.text = "WebSocketClient não disponível"
 
-# --- Funções que recebem feedback do addon ---
-
+# --- Funções que recebem feedback ---
 func _on_connection_succeeded() -> void:
 	status_label.text = "Conectado! Crie ou entre em uma sala."
 
@@ -66,7 +65,11 @@ func _on_room_created(data: Dictionary) -> void:
 
 func _on_room_joined(data: Dictionary) -> void:
 	status_label.text = "Entrou na sala: %s" % data.get("code")
-	MultiplayerManager.spawn_player(WebSocketClient.uuid, true) # Cria o jogador local
+	# Acessa o MultiplayerManager através do caminho absoluto
+	var mp_manager = get_node("/root/MultiplayerManager")
+	var ws_client = get_node("/root/WebSocketClient")
+	if mp_manager and ws_client:
+		mp_manager.spawn_player(ws_client.uuid, true)
 
 func _on_server_error(data: Dictionary) -> void:
 	status_label.text = "Erro: %s" % data.get("msg")

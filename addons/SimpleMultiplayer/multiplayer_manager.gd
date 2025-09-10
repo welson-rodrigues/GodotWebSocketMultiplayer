@@ -1,28 +1,27 @@
-# multiplayer_manager.gd
 extends Node
 
 @export var player_scene: PackedScene
 @export var network_player_scene: PackedScene
 @export var player_container_path: NodePath
 
-var player_nodes = {} # Dicionário para guardar os nós dos jogadores
-
-# Guardamos a referência do singleton
-var WebSocketClient = null
+var player_nodes = {}
 
 func _ready():
-	# Verificamos se o singleton existe. Se não, emitimos um erro e paramos a execução.
-	if not Engine.has_singleton("WebSocketClient"):
-		push_error("WebSocketClient não encontrado! Verifique se o plugin está ativo e a ordem dos Autoloads.")
-		return
-
-	# Se existe, pegamos a referência uma única vez.
-	WebSocketClient = Engine.get_singleton("WebSocketClient")
+	print("MultiplayerManager carregado")
 	
-	# Conectamos os sinais
-	WebSocketClient.connect("player_joined", Callable(self, "_on_player_joined"))
-	WebSocketClient.connect("player_left", Callable(self, "_on_player_left"))
-	WebSocketClient.connect("received_data", Callable(self, "_on_received_data"))
+	# Conecta os sinais com um pequeno delay para garantir que WebSocketClient esteja pronto
+	call_deferred("_connect_signals")
+
+func _connect_signals():
+	# Acessa o WebSocketClient através do autoload global
+	var ws_client = get_node("/root/WebSocketClient")
+	if ws_client:
+		ws_client.connect("player_joined", Callable(self, "_on_player_joined"))
+		ws_client.connect("player_left", Callable(self, "_on_player_left"))
+		ws_client.connect("received_data", Callable(self, "_on_received_data"))
+		print("Sinais conectados com sucesso")
+	else:
+		print("WebSocketClient não encontrado no /root")
 
 func spawn_player(uuid: String, is_local: bool):
 	if not player_scene or not network_player_scene:
@@ -56,5 +55,3 @@ func _on_received_data(data: Dictionary):
 	if cmd == "update_position":
 		if player_nodes.has(sender_uuid):
 			player_nodes[sender_uuid].position = Vector2(content.x, content.y)
-	
-	# O usuário do addon adicionaria suas próprias lógicas de "update_action" aqui

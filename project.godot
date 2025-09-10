@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GodotWebSocketMultiplayer"
 run/main_scene="res://addons/cenas/lobby_example.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
