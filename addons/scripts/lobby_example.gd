@@ -13,11 +13,10 @@ func _ready() -> void:
 	join_room_button.connect("pressed", Callable(self, "_on_join_room_button_pressed"))
 	create_room_button.connect("pressed", Callable(self, "_on_create_room_button_pressed"))
 	
-	# Conecta aos sinais do WebSocketClient com um pequeno delay
+	# Conecta aos sinais do WebSocketClient
 	call_deferred("_connect_websocket_signals")
 
 func _connect_websocket_signals():
-	# Acessa o WebSocketClient através do caminho absoluto
 	var ws_client = get_node("/root/WebSocketClient")
 	if ws_client:
 		ws_client.connect("connection_succeeded", Callable(self, "_on_connection_succeeded"))
@@ -60,16 +59,20 @@ func _on_connection_succeeded() -> void:
 func _on_connection_failed() -> void:
 	status_label.text = "Falha na conexão."
 
-func _on_room_created(data: Dictionary) -> void:
+func _on_room_created(data: Dictionary):
 	status_label.text = "Sala criada! Código: %s" % data.get("code")
+	# ✅ CARREGA O MUNDO TAMBÉM QUANDO CRIA UMA SALA
+	call_deferred("_load_world_scene")
 
-func _on_room_joined(data: Dictionary) -> void:
+func _on_room_joined(data: Dictionary):
 	status_label.text = "Entrou na sala: %s" % data.get("code")
-	# Acessa o MultiplayerManager através do caminho absoluto
-	var mp_manager = get_node("/root/MultiplayerManager")
-	var ws_client = get_node("/root/WebSocketClient")
-	if mp_manager and ws_client:
-		mp_manager.spawn_player(ws_client.uuid, true)
-
-func _on_server_error(data: Dictionary) -> void:
-	status_label.text = "Erro: %s" % data.get("msg")
+	# ✅ CARREGA O MUNDO QUANDO ENTRA NUMA SALA
+	call_deferred("_load_world_scene")
+	
+func _load_world_scene():
+	print("Carregando mundo do jogo...")
+	var error = get_tree().change_scene_to_file("res://addons/cenas/test_world.tscn")
+	if error != OK:
+		print("ERRO ao carregar cena do mundo: ", error)
+	else:
+		print("Mundo do jogo carregado com sucesso!")
