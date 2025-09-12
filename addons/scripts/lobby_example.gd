@@ -1,7 +1,7 @@
 extends Control
 
 #@onready var server_url_line_edit = $VBoxContainer/ServerUrlLineEdit
-@onready var connect_button = $VBoxContainer/ConnectButton
+#@onready var connect_button = $VBoxContainer/ConnectButton
 @onready var room_code_line_edit = $VBoxContainer/HBoxContainer/RoomCodeLineEdit
 @onready var join_room_button = $VBoxContainer/HBoxContainer/JoinRoomButton
 @onready var create_room_button = $VBoxContainer/CreateRoomButton
@@ -11,7 +11,7 @@ const DEFAULT_SERVER_URL = "ws://localhost:9090"
 
 func _ready() -> void:
 	# Conecta os botões
-	connect_button.connect("pressed", Callable(self, "_on_connect_button_pressed"))
+	#connect_button.connect("pressed", Callable(self, "_on_connect_button_pressed"))
 	join_room_button.connect("pressed", Callable(self, "_on_join_room_button_pressed"))
 	create_room_button.connect("pressed", Callable(self, "_on_create_room_button_pressed"))
 	
