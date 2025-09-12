@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3pil7ks0jcdu"]
 
-[ext_resource type="Script" uid="uid://bmw1nje5imhnc" path="res://addons/scripts/lobby_example.gd" id="1_8eg6v"]
+[ext_resource type="Script" uid="uid://bmw1nje5imhnc" path="res://demo/scripts/lobby_example.gd" id="1_8eg6v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vaqyl"]
 font_size = 35

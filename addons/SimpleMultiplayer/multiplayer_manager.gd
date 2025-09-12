@@ -9,8 +9,8 @@ var pending_spawns: Array = []
 
 func _ready():
 	# Configuração manual para Autoload
-	player_scene = preload("res://addons/cenas/player_test.tscn")
-	network_player_scene = preload("res://addons/cenas/network_player_test.tscn")
+	player_scene = preload("res://demo/cenas/player_test.tscn")
+	network_player_scene = preload("res://demo/cenas/network_player_test.tscn")
 	
 	print("=== MULTIPLAYER MANAGER AUTOLOAD ===")
 	print("Player Scene: ", player_scene != null)

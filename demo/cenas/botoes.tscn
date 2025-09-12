@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4xg08rdfleab"]
 
-[ext_resource type="Script" uid="uid://c61qyxwxyso3o" path="res://addons/cenas/botoes.gd" id="1_g530v"]
+[ext_resource type="Script" uid="uid://c61qyxwxyso3o" path="res://demo/cenas/botoes.gd" id="1_g530v"]
 [ext_resource type="Texture2D" uid="uid://cmtmrsb7u3206" path="res://icon.svg" id="1_v70o2"]
 
 [node name="botoes" type="CanvasLayer"]

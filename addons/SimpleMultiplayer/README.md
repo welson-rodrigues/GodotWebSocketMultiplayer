@@ -49,8 +49,8 @@ O passo a passo completo de como configurar e fazer o deploy do servidor no Rend
 
 1.  No editor da Godot, vá em **Projeto -> Configurações do Projeto... -> Simple Multiplayer**.
 2.  Você encontrará a propriedade `Server Url`.
-    * Para **testes locais**, use: `ws://127.0.0.1:9090`
-    * Para o **servidor online** no Render, use o endereço que ele te fornecer, lembrando de usar `wss://` (WebSocket Seguro): `wss://seu-servidor.onrender.com`
+	* Para **testes locais**, use: `ws://127.0.0.1:9090`
+	* Para o **servidor online** no Render, use o endereço que ele te fornecer, lembrando de usar `wss://` (WebSocket Seguro): `wss://seu-servidor.onrender.com`
 
 ### Passo 3: Criar a Cena de Lobby
 
@@ -60,23 +60,23 @@ Exemplo de como reagir aos eventos no script do seu lobby:
 
 ```gdscript
 func _ready():
-    var ws_client = get_node("/root/WebSocketClient")
-    
-    # Conecta aos sinais para dar feedback ao jogador
-    ws_client.connect("connection_succeeded", Callable(self, "_on_connection_succeeded"))
-    ws_client.connect("room_created", Callable(self, "_on_room_created"))
-    ws_client.connect("start_game", Callable(self, "_on_start_game"))
+	var ws_client = get_node("/root/WebSocketClient")
+	
+	# Conecta aos sinais para dar feedback ao jogador
+	ws_client.connect("connection_succeeded", Callable(self, "_on_connection_succeeded"))
+	ws_client.connect("room_created", Callable(self, "_on_room_created"))
+	ws_client.connect("start_game", Callable(self, "_on_start_game"))
 
 func _on_connection_succeeded():
-    status_label.text = "Conectado! Crie ou entre em uma sala."
+	status_label.text = "Conectado! Crie ou entre em uma sala."
 
 func _on_room_created(data: Dictionary):
-    var code = data.get("code", "ERRO")
-    status_label.text = "Sala criada: %s. Aguardando jogadores..." % code
+	var code = data.get("code", "ERRO")
+	status_label.text = "Sala criada: %s. Aguardando jogadores..." % code
 
 func _on_start_game():
-    # Lógica para carregar a cena principal do jogo
-    get_tree().change_scene_to_file("res://world.tscn")
+	# Lógica para carregar a cena principal do jogo
+	get_tree().change_scene_to_file("res://world.tscn")
 ```
 
 ### Passo 4: Gameplay
@@ -91,5 +91,3 @@ Este projeto é distribuído sob a licença MIT. Veja o arquivo [LICENSE](https:
 Criado por Zee GameDev.
 
 Visite meu canal no YouTube para entender como usar o Addon
-
-
