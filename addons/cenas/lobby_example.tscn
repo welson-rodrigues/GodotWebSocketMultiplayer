@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bmw1nje5imhnc" path="res://addons/scripts/lobby_example.gd" id="1_8eg6v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8eg6v"]
-font_size = 30
+font_size = 35
 
 [sub_resource type="LabelSettings" id="LabelSettings_vaqyl"]
-font_size = 30
+font_size = 35
 
 [node name="lobby_example" type="Control"]
 layout_mode = 3
@@ -37,11 +37,13 @@ text = "URL do Servidor:"
 label_settings = SubResource("LabelSettings_8eg6v")
 
 [node name="ServerUrlLineEdit" type="LineEdit" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "ws://127.0.0.1:9090"
 
 [node name="ConnectButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Conectar"
@@ -51,17 +53,17 @@ layout_mode = 2
 
 [node name="RoomCodeLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 placeholder_text = "Código da Sala"
 
 [node name="JoinRoomButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "Entrar na Sala"
 
 [node name="CreateRoomButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "Criar Sala"
 
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]

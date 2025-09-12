@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 WebSocketClient="*res://addons/SimpleMultiplayer/websocket_client.gd"
 MultiplayerManager="*res://addons/SimpleMultiplayer/multiplayer_manager.gd"
 
+[display]
+
+window/size/mode=4
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/SimpleMultiplayer/plugin.cfg")
@@ -28,3 +34,7 @@ enabled=PackedStringArray("res://addons/SimpleMultiplayer/plugin.cfg")
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+
+[simple_multiplayer]
+
+server_url="ws://localhost:9090"
