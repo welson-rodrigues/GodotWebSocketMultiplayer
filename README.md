@@ -27,6 +27,7 @@ Este addon foi desenvolvido com a exportação para **plataformas mobile** em me
 ### Passo 1: Configurar o Servidor
 
 Você precisará de um servidor Node.js rodando para que os clientes possam se conectar. O código do servidor está incluído neste projeto.
+[ServidorWebSocketGodot](https://github.com/welson-rodrigues/ServidorWebSocketGodot)
 
 #### Teste Local (Localhost)
 
