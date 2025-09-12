@@ -42,7 +42,7 @@ Para jogar com amigos pela internet, você pode hospedar o servidor gratuitament
 
 O passo a passo completo de como configurar e fazer o deploy do servidor no Render.com é ensinado no meu canal do YouTube!
 
-**➡️ [Link para o seu canal ou vídeo específico aqui]**
+**➡️ [video]**
 
 ### Passo 2: Configurar o Cliente (Godot)
 
@@ -76,3 +76,5 @@ func _on_room_created(data: Dictionary):
 func _on_start_game():
     # Lógica para carregar a cena principal do jogo
     get_tree().change_scene_to_file("res://world.tscn")
+```
+Criado por Zee GameDev.
