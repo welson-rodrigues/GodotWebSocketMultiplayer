@@ -78,4 +78,15 @@ func _on_start_game():
     # Lógica para carregar a cena principal do jogo
     get_tree().change_scene_to_file("res://world.tscn")
 ```
+
+### Passo 4: Gameplay
+O `MultiplayerManager `cuida de instanciar os jogadores. Você só precisa ter:
+1. Uma cena para o jogador local (com seu script de movimento).
+2. Uma cena para o jogador de rede (um Node2D com um Sprite2D e uma Area2D para detecção de colisão é o ideal).
+3. Um nó chamado PlayerContainer na sua cena de jogo, onde os jogadores serão instanciados. O MultiplayerManager o encontrará automaticamente.
+
+## Licença
+Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
 Criado por Zee GameDev.
+Visite meu canal no YouTube para mais tutoriais de Godot!
