@@ -89,4 +89,7 @@ O `MultiplayerManager `cuida de instanciar os jogadores. Você só precisa ter:
 Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
 Criado por Zee GameDev.
+
 Visite meu canal no YouTube para mais tutoriais de Godot!
+
+
