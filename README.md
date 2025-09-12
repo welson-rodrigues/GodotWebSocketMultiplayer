@@ -90,6 +90,6 @@ Este projeto é distribuído sob a licença MIT. Veja o arquivo [LICENSE](https:
 
 Criado por Zee GameDev.
 
-Visite meu canal no YouTube para mais tutoriais de Godot!
+Visite meu canal no YouTube para entender como usar o Addon
 
 
