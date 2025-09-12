@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4xg08rdfleab"]
+
+[ext_resource type="Script" uid="uid://c61qyxwxyso3o" path="res://addons/cenas/botoes.gd" id="1_g530v"]
+[ext_resource type="Texture2D" uid="uid://cmtmrsb7u3206" path="res://icon.svg" id="1_v70o2"]
+
+[node name="botoes" type="CanvasLayer"]
+script = ExtResource("1_g530v")
+
+[node name="cima" type="TouchScreenButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(176, 416)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_v70o2")
+action = "ui_up"
+
+[node name="baixo" type="TouchScreenButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(176, 528)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_v70o2")
+action = "ui_down"
+
+[node name="esquerda" type="TouchScreenButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(88, 480)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_v70o2")
+action = "ui_left"
+
+[node name="direita" type="TouchScreenButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(264, 480)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_v70o2")
+action = "ui_right"

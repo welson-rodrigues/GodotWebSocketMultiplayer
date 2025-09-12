@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckv7jeahjyjks"]
+[gd_scene load_steps=4 format=3 uid="uid://ckv7jeahjyjks"]
 
-[ext_resource type="Texture2D" uid="uid://cmtmrsb7u3206" path="res://icon.svg" id="1_di4w8"]
 [ext_resource type="Script" uid="uid://cvrwkddkbejq6" path="res://addons/cenas/player_container.gd" id="1_gsdvk"]
 [ext_resource type="Script" uid="uid://b1c6rmvs76xsu" path="res://addons/cenas/test_world.gd" id="1_tlmkk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_di4w8"]
-size = Vector2(112.915276, 137.5481)
+[ext_resource type="PackedScene" uid="uid://b4xg08rdfleab" path="res://addons/cenas/botoes.tscn" id="3_tlmkk"]
 
 [node name="test_world" type="Node2D"]
 script = ExtResource("1_tlmkk")
@@ -13,13 +10,4 @@ script = ExtResource("1_tlmkk")
 [node name="PlayerContainer" type="Node2D" parent="."]
 script = ExtResource("1_gsdvk")
 
-[node name="chao" type="Sprite2D" parent="PlayerContainer"]
-position = Vector2(597, 602)
-scale = Vector2(10.255477, 0.69066757)
-texture = ExtResource("1_di4w8")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="PlayerContainer/chao"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContainer/chao/StaticBody2D"]
-position = Vector2(-1.8526611, -3.61969)
-shape = SubResource("RectangleShape2D_di4w8")
+[node name="botoes" parent="." instance=ExtResource("3_tlmkk")]
