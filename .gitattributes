@@ -1,5 +1,5 @@
-# Primeiro inclua o que deve ser exportado (regras específicas primeiro)
+# Inclui apenas a pasta do plugin nos arquivos de exportação (zip/tar.gz)
 /addons/SimpleMultiplayer/** export
 
-# Depois exclua tudo o resto (regra geral por último)
+# Exclui tudo o resto
 * export-ignore
