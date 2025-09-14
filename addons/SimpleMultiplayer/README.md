@@ -31,8 +31,8 @@ To run it locally, open the server's folder in a terminal and run `npm install`,
 ### 3. Configure the URL in Godot
 1.  In the Godot editor, go to **Project -> Project Settings... -> Simple Multiplayer**.
 2.  Set the `Server Url` property:
-    * **Local:** `ws://127.0.0.1:9090`
-    * **Online:** `wss://your-server.onrender.com`
+	* **Local:** `ws://127.0.0.1:9090`
+	* **Online:** `wss://your-server.onrender.com`
 
 ## How It Works
 
