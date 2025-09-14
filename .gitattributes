@@ -6,5 +6,5 @@ demo/ export-ignore
 project.godot export-ignore
 icon.svg export-ignore
 icon.svg.import export-ignore
-
-* export-ignore
+*.tmp export-ignore
+.import export-ignore
