@@ -1,10 +1,10 @@
 addons/SimpleMultiplayer/ export
 addons/SimpleMultiplayer/** export
-
 README.md export
 
-.* export-ignore
-*/* export-ignore
-*/** export-ignore
 demo/ export-ignore
-demo/** export-ignore
+.godot/ export-ignore
+project.godot export-ignore
+icon.svg export-ignore
+
+* export-ignore
