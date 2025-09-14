@@ -52,7 +52,7 @@ This project is distributed under the MIT License. See the [LICENSE](https://git
 
 *Created by Zee GameDev.*
 *Visit my YouTube channel to learn how to use this addon!*
-**➡️ [YouTube Channel Link Here]**
+**➡️ [YouTube Channel]**
 
 ---
 <br>
