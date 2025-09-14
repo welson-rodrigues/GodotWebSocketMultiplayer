@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 WebSocketClient="*res://addons/SimpleMultiplayer/websocket_client.gd"
-MultiplayerManager="*res://addons/SimpleMultiplayer/multiplayer_manager.gd"
+MultiplayerManager="*res://addons/SimpleMultiplayer/multiplayer_manager.tscn"
 
 [display]
 

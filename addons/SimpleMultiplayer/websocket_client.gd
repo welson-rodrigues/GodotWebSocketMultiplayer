@@ -7,7 +7,7 @@ signal connection_closed
 signal room_created(data)
 signal room_joined(data)
 signal server_error(data)
-signal start_game # <--- GARANTIR QUE ESTE SINAL ESTÁ DECLARADO AQUI
+signal start_game 
 
 # Sinais para o gameplay
 signal spawn_local_player(player_data)
@@ -71,7 +71,7 @@ func handle_incoming_data(data: Dictionary):
 		"room_joined":
 			emit_signal("room_joined", content)
 		"start_game":
-			emit_signal("start_game") # <--- GARANTIR QUE O SINAL É EMITIDO AQUI
+			emit_signal("start_game") 
 		"spawn_local_player":
 			emit_signal("spawn_local_player", content.get("player", {}))
 		"spawn_new_player":

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 var is_local_player: bool = false
-var can_move: bool = false # <-- Variável de controle
+var can_move: bool = false 
 
 func _ready():
 	# Verifica se é o jogador local
