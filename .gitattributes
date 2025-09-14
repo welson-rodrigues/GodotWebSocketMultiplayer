@@ -1,5 +1,3 @@
-# Inclui apenas a pasta do plugin nos arquivos de exportação (zip/tar.gz)
 /addons/SimpleMultiplayer/** export
 
-# Exclui tudo o resto
 * export-ignore
