@@ -1,3 +1,10 @@
-/addons/SimpleMultiplayer/** export
+addons/SimpleMultiplayer/ export
+addons/SimpleMultiplayer/** export
 
-* export-ignore
+README.md export
+
+.* export-ignore
+*/* export-ignore
+*/** export-ignore
+demo/ export-ignore
+demo/** export-ignore
