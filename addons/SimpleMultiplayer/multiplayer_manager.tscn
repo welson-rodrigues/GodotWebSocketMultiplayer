@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bskdhm210mm7n"]
+[gd_scene load_steps=4 format=3 uid="uid://bskdhm210mm7n"]
 
 [ext_resource type="Script" uid="uid://b44e5wc5xjmva" path="res://addons/SimpleMultiplayer/multiplayer_manager.gd" id="1_tlug6"]
+[ext_resource type="PackedScene" uid="uid://frburacvuc6m" path="res://demo/cenas/player_test.tscn" id="2_o2ywc"]
+[ext_resource type="PackedScene" uid="uid://qbg6icue0a41" path="res://demo/cenas/network_player_test.tscn" id="3_t0jfy"]
 
 [node name="MultiplayerManager" type="Node"]
 script = ExtResource("1_tlug6")
+player_scene = ExtResource("2_o2ywc")
+network_player_scene = ExtResource("3_t0jfy")
